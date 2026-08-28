@@ -1,0 +1,14 @@
+[workspace]
+members = ["crates/db-core", "crates/engine"]
+
+[package]
+name = "rust-sql-db"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+db-core = { path = "crates/db-core" }
+db-engine = { path = "crates/engine" }
+
+[workspace.dependencies]
+db-core = { path = "crates/db-core" }
