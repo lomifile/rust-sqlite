@@ -22,9 +22,24 @@ pub struct Column {
     data_type: DataType,
 }
 
+impl Column {
+    pub fn new(name: String, data_type: DataType) -> Self {
+        Column { name, data_type }
+    }
+}
+
 #[derive(Debug)]
 pub struct Row {
     values: Vec<Value>,
+}
+
+impl Row {
+    pub fn new(values: Option<Vec<Value>>) -> Self {
+        match values {
+            Some(values) => Row { values },
+            None => Row { values: Vec::new() },
+        }
+    }
 }
 
 #[derive(Debug)]
@@ -71,6 +86,10 @@ impl Table {
         self.rows.insert(id, row);
 
         Ok(())
+    }
+
+    pub fn get_rows(&self) -> &BTreeMap<i64, Row> {
+        &self.rows
     }
 }
 
